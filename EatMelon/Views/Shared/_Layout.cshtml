@@ -77,13 +77,13 @@
             <div class="top-header-info">
 
                 @{
-                    EatMelon.Controllers.UserMessage usrMeg = (EatMelon.Controllers.UserMessage) TempData["UserMessage"];
+                    EatMelon.Controllers.UserMessage usrMeg = (EatMelon.Controllers.UserMessage) Session["UserMessage"];
                     if (usrMeg != null && usrMeg.id != 0)
                     {
                         <div class="top-contact-info">
                             <div class="top-contact-info">
                                 <ul class="unstyled-list list-inline">
-                                    <li style="font-family: 微软雅黑"><span class="phone"> </span>你好,<a href="personalPage">@usrMeg.name</a></li>
+                                    <li style="font-family: 微软雅黑"><span class="phone"> </span>你好,<a href="~/AccountIndex/Index">@usrMeg.name</a></li>
                                     <li style="font-family: 微软雅黑"><a href="cartPage"><span class="mail"> </span></a></li>
                                     <div class="clearfix"> </div>
                                 </ul>
@@ -145,8 +145,11 @@
             <div class="top-header-search-box">
                 @using (Html.BeginForm("Index", "SearchProduct"))
                 {
-                    <input type="text" name="keyString" placeholder="Search" required maxlength="22" />
+                    <input type="text" name="keyString" placeholder="@TempData["KeyString"]" required maxlength="22"/>
+                    
                     <input type="submit" value=" " />
+                    
+                    
                 }
             </div>
             <!---top-header-search-box--->
